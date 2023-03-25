@@ -48,9 +48,11 @@ function checkAnswer(){
 
     if (isCorrect){
         alert('Hey! well done, you got the correct answer! :D');
+        incrementScore();
     }
     else {
-        alert(`Awwwww...you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`)
+        alert(`Awwwww...you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`);
+        incrementWrongScore();
     }
 
     runGame(calculatedAnswer[1]);
@@ -73,12 +75,21 @@ function calculateCorrectAnswer(){
     }
 };
 
-function incrementScore(){
 
+/**
+ * Gets the current score from the DOM and increments by 1
+ */
+function incrementScore(){
+    let oldScore = parseInt(document.getElementById('score').innerText);
+    document.getElementById('score').innerText = ++oldScore;
 };
 
+/**
+ * Gets the current incorrect score from the DOM and increments by 1
+ */
 function incrementWrongScore(){
-
+    let oldIncorrect = parseInt(document.getElementById('incorrect').innerText);
+    document.getElementById('incorrect').innerText = ++oldIncorrect;
 };
 
 function displayAdditionQuestion(operand1, operand2){
