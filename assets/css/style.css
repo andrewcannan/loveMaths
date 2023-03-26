@@ -218,9 +218,9 @@ body {
         display: block;
         margin: 0 auto;
     }
-    .btn--gray {
+    /* .btn--gray {
         margin-top: 0;
-    }
+    } */
 
     .score-area {
         width: 100%;
