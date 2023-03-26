@@ -71,11 +71,11 @@ function checkAnswer(){
     let isCorrect = userAnswer === calculatedAnswer[0];
 
     if (isCorrect){
-        alert('Hey! well done, you got the correct answer! :D');
+        document.getElementById('answer-text').innerText = 'Hey! well done, you got the correct answer! :D';
         incrementScore();
     }
     else {
-        alert(`Awwwww...you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`);
+        document.getElementById('answer-text').innerText = `Awwwww...you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`;
         incrementWrongScore();
     }
 

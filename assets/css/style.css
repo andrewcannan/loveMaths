@@ -84,6 +84,11 @@ body {
     padding: 25px;
 }
 
+.user-answer {
+    position: relative;
+    bottom: 10px;
+    color: red;
+}
 /* --------- Buttons */
 
 .btn {
