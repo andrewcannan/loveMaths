@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+
     runGame("addition");
 });
 
@@ -23,9 +29,19 @@ document.addEventListener("DOMContentLoaded", function() {
 *and after the users answers has been processed
 */
 function runGame(gameType){
+    document.getElementById('answer-box').value = "";
+    document.getElementById('answer-box').focus();
+
     //Generate two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
+    // Loop to create two divisible whole intergers for division game
+    let num3 = Math.floor(Math.random() * 50) + 1;
+    let num4 = Math.floor(Math.random() * 50) + 1;
+    while (num3 % num4 !== 0){
+        num4 = Math.floor(Math.random() * 25) + 1;
+    }
+       
 
     if (gameType === 'addition'){
         displayAdditionQuestion(num1, num2);
@@ -37,13 +53,12 @@ function runGame(gameType){
         displaySubtractQuestion(num1, num2);
     }
     else if (gameType === 'division'){
-        displayDivisionQuestion(num1, num2);
+        displayDivisionQuestion(num3, num4);
     }
     else {
         alert(`unknown game type: ${gameType}`);
         throw(`unknown game type: ${gameType}. Aborting!`);
     }
-
 };
 
 /**
@@ -129,7 +144,7 @@ function displayMultiplyQuestion(operand1, operand2){
 };
 
 function displayDivisionQuestion(operand1, operand2){
-    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
-    document.getElementById('operand2').textContent = operand2 < operand1 ? operand2 : operand1;
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
     document.getElementById('operator').textContent = "/";
 };
