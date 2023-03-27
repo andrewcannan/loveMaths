@@ -30,7 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
 */
 function runGame(gameType){
     document.getElementById('answer-box').value = "";
-    document.getElementById('answer-box').focus();
+    /**  
+     * media query to only focus answer box on large screen sizes
+     * enabling keyboard on phone to diappear after submit
+     */
+    let mediaQuery = window.matchMedia('(min-width:768px)')
+    if (mediaQuery.matches){
+        
+        document.getElementById('answer-box').focus();
+    }
 
     //Generate two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
